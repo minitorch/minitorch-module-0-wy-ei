@@ -107,16 +107,17 @@ def test_sigmoid(a: float) -> None:
     * It crosses 0 at 0.5
     * It is  strictly increasing.
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    assert sigmoid(100) > 0 and sigmoid(100) <= 1.0
+    assert sigmoid(100) == 1 - sigmoid(neg(100))
 
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
 def test_transitive(a: float, b: float, c: float) -> None:
     "Test the transitive property of less-than (a < b and b < c implies a < c)"
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    assert lt(a, b) == (a < b)
+    assert lt(b, c) == (b < c)
+    assert lt(a, c) == (a < c)
 
 
 @pytest.mark.task0_2
@@ -126,7 +127,7 @@ def test_symmetric() -> None:
     gives the same value regardless of the order of its input.
     """
     # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    assert mul(1.73, 1.41) == mul(1.41, 1.73) 
 
 
 @pytest.mark.task0_2
@@ -135,8 +136,7 @@ def test_distribute() -> None:
     Write a test that ensures that your operators distribute, i.e.
     :math:`z \times (x + y) = z \times x + z \times y`
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
+    assert_close(mul(3.14, add(1.73, 1.41)), add(mul(3.14, 1.73), mul(3.14, 1.41)))
 
 
 @pytest.mark.task0_2
@@ -144,9 +144,7 @@ def test_other() -> None:
     """
     Write a test that ensures some other property holds for your functions.
     """
-    # TODO: Implement for Task 0.2.
-    raise NotImplementedError("Need to implement for Task 0.2")
-
+    
 
 # ## Task 0.3  - Higher-order functions
 
@@ -174,7 +172,12 @@ def test_sum_distribute(ls1: List[float], ls2: List[float]) -> None:
     is the same as the sum of each element of `ls1` plus each element of `ls2`.
     """
     # TODO: Implement for Task 0.3.
-    raise NotImplementedError("Need to implement for Task 0.3")
+    s = 0
+    for n in ls1:
+        s += n
+    for n in ls2:
+        s += n
+    assert_close(sum(ls1) + sum(ls2), s)
 
 
 @pytest.mark.task0_3
